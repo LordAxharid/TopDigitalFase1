@@ -3,4 +3,4 @@
  * Implements hook_install()
  */
 
-require(__DIR__.'/src/Migrations/td_users_install.php');
+require(__DIR__.'/src/migrations/td_users_install.php');

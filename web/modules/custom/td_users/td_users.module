@@ -2,7 +2,6 @@
 
 use Drupal\Core\Form\FormStateInterface;
 
-
 /**
  * Implements hook_theme().
  */
@@ -42,6 +41,9 @@ function td_users_form_user_register_form_alter(&$form, FormStateInterface $form
   
         }
     }
+
+  
+
 }
 
 
