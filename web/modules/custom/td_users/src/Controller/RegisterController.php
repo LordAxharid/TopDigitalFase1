@@ -15,11 +15,7 @@ class RegisterController extends ControllerBase{
         ->getFormObject('user', 'register')
         ->setEntity($entity);
         $form = \Drupal::formBuilder()->getForm($formObject);
-
         return $form;
           
     }
-
-  
-
 }

@@ -1,0 +1,73 @@
+co_150_core.config:
+  path: '/admin/co_150_core/config'
+  defaults:
+    _title: 'Tabla de Registros'
+    _form: \Drupal\co_150_core\Form\ConfigForm
+  requirements:
+    _access: 'TRUE'
+    _role: 'administrator'
+  options:
+    _admin_route: TRUE
+
+co_150_core.admin_users:
+  path: '/admin/table-custom/{table}'
+  defaults:
+   _controller: '\Drupal\co_150_core\Controller\TableCustom::index'
+   _title: 'Tabla de Registros'
+  requirements:
+    _access: 'TRUE'
+    _role: 'administrator'
+  options:
+    _admin_route: TRUE
+
+co_150_core.admin_users.delete:
+  path: '/admin/table-custom/{table}/delete/{id}'
+  defaults:
+   _controller: '\Drupal\co_150_core\Controller\TableCustom::delete'
+   _title: 'Tabla de Registros'
+  requirements:
+    _access: 'TRUE'
+    _role: 'administrator'
+  options:
+    _admin_route: TRUE
+
+co_150_core.admin_users.edit:
+  path: '/admin/table-custom/{table}/edit/{id}'
+  method: 'POST'
+  defaults:
+   _controller: '\Drupal\co_150_core\Controller\TableCustom::edit'
+   _title: 'Tabla de Registros'
+  requirements:
+    _access: 'TRUE'
+    _role: 'administrator'
+  options:
+    _admin_route: TRUE
+
+co_150_core.admin_users.export:
+  path: '/admin/table-custom/{table}/export'
+  defaults:
+   _controller: '\Drupal\co_150_core\Controller\ReportController::export'
+   _title: 'Tabla de Registros'
+  requirements:
+    _access: 'TRUE'
+    _role: 'administrator'
+  options:
+    _admin_route: TRUE
+
+
+
+co_150_core.admin_users.test:
+  path: '/create-webform'
+  defaults:
+    _controller: '\Drupal\co_150_core\Controller\TestController::webformExample'
+    _title: 'Tabla de Registros'
+  requirements:
+    _permission: 'access content'
+
+co_150_core.generate.user:
+  path: '/150porciento/gen-user-a'
+  defaults:
+    _controller: '\Drupal\co_150_core\Controller\UserController::createUser'
+    _title: 'Generate User'
+  requirements:
+    _permission: 'access content'

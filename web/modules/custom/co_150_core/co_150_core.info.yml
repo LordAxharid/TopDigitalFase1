@@ -1,0 +1,7 @@
+name: Modulo 150 Core
+type: module
+description: 'Modulo de funcionalidad'
+package: 150%
+version: 8.x
+core: 8.x
+
