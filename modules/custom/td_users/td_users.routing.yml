@@ -1,0 +1,9 @@
+td_users.register_form:
+  path: '/register'
+  defaults:
+    _controller: '\Drupal\td_users\Controller\RegisterController::registerForm'
+    _title: 'Register'
+  requirements:
+    _permission: 'access content'
+  options:
+    _admin_route: TRUE

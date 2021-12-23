@@ -1,0 +1,55 @@
+<?php
+
+use Drupal\Core\Form\FormStateInterface;
+
+
+/**
+ * Implements hook_theme().
+ */
+function td_users_theme($existing, $type, $theme, $path)
+{
+    //pendiente para envio de link config
+  //$configLink = \Drupal::config('pacifico_settings.config');
+  return [
+    'register-user-form' => [
+      'render element' => 'form',
+      'template' => 'register-user-form',
+    ],
+  ];
+
+  return $themes;
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function td_users_form_user_register_form_alter(&$form, FormStateInterface $form_state, $form_id) {    
+
+    $roles = \Drupal::currentUser()->getRoles();
+    $rolesToString = implode("", $roles);
+
+    if ($form_id === 'user_register_form') {
+
+        if ($rolesToString == 'anonymous') {
+     
+           hide($form['account']['name']);
+           $form['account']['name']['#required'] = FALSE;
+           
+           $form['#validate'][0] = 'saveName';
+           $form['#validate'][1] = '::validateForm';
+
+           $form['#theme'] = ['register-user-form'];
+  
+         
+        }
+    }
+}
+
+
+function saveName(array &$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+
+  $getMail = $form_state->getValue('mail');
+  $form_state->setValue('name', $getMail);
+
+}
+
