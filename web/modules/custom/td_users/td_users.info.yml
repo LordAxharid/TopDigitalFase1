@@ -1,6 +1,6 @@
 name: Top digital users
 type: module
-description: 'administrara la parte de los usuarios'
+description: 'Gestion de usuarios  por modulo custom empleando acciones de drupal'
 package: 'custom'
 version: 1.0.0
 core: 8.x
