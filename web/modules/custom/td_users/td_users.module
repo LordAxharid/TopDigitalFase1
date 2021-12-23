@@ -40,7 +40,6 @@ function td_users_form_user_register_form_alter(&$form, FormStateInterface $form
 
            $form['#theme'] = ['register-user-form'];
   
-         
         }
     }
 }
