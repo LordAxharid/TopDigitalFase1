@@ -9,7 +9,6 @@ use \Drupal\Core\Entity\Display\EntityFormDisplayInterface;
 function td_users_install(){
 
   _addFieldsUser();
-  entity_get_form_display();
 
 }
 
@@ -37,6 +36,7 @@ function _addFieldsUser() {
       'bundle' => 'user',
       'label' => $fieldlabel,
     ));
+    entity_get_form_display();
     $field->save();
   }
 
