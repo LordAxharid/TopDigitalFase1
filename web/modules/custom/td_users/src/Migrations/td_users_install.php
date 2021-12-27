@@ -39,15 +39,12 @@ function _addFieldsUser() {
     ));
     $field->save();
 
-    // Create a form display for the default form mode.
+   // Create a form display for the default form mode.
     entity_get_form_display('user', 'user', 'default')
       ->setComponent($fieldname, array(
-      'targetEntityType' => $entity_type,
-      'bundle' => $bundle,
-      'mode' => $form_mode,
-      'weight' => 1,
-      'status' => TRUE,
+      'persist_with_no_fields' => TRUE,
     ))->save();
+
   }
 
   $fieldname = 'field_user_lastname';
@@ -68,26 +65,39 @@ function _addFieldsUser() {
       'label' => $fieldlabel,
     ));
     $field->save();
+
+      // Create a form display for the default form mode.
+      entity_get_form_display('user', 'user', 'default')
+        ->setComponent($fieldname, array(
+        'persist_with_no_fields' => TRUE,
+      ))->save();
+    
   }
 
   $fieldname = 'field_user_phone';
   $fieldlabel = 'Teléfono';
   if(!\Drupal\field\Entity\FieldStorageConfig::loadByName('user',$fieldname)){
 
-    $field_storage = \Drupal\field\Entity\FieldStorageConfig::create(array(
-      'field_name' => $fieldname,
-      'entity_type' => 'user',
-      'type' => 'string',
-    ));
-    $field_storage->save();
+      $field_storage = \Drupal\field\Entity\FieldStorageConfig::create(array(
+        'field_name' => $fieldname,
+        'entity_type' => 'user',
+        'type' => 'string',
+      ));
+      $field_storage->save();
 
-    $field = \Drupal\field\Entity\FieldConfig::create(array(
-      'field_name' => $fieldname,
-      'entity_type' => 'user',
-      'bundle' => 'user',
-      'label' => $fieldlabel,
-    ));
-    $field->save();
+      $field = \Drupal\field\Entity\FieldConfig::create(array(
+        'field_name' => $fieldname,
+        'entity_type' => 'user',
+        'bundle' => 'user',
+        'label' => $fieldlabel,
+      ));
+      $field->save();
+
+      // Create a form display for the default form mode.
+      entity_get_form_display('user', 'user', 'default')
+        ->setComponent($fieldname, array(
+        'persist_with_no_fields' => TRUE,
+      ))->save();
   }
 
   $fieldname = 'field_user_dni';
@@ -108,6 +118,12 @@ function _addFieldsUser() {
       'label' => $fieldlabel,
     ));
     $field->save();
+
+    // Create a form display for the default form mode.
+    entity_get_form_display('user', 'user', 'default')
+      ->setComponent($fieldname, array(
+      'persist_with_no_fields' => TRUE,
+    ))->save();
   }
 
   $fieldname = 'field_user_birthdate';
@@ -128,6 +144,13 @@ function _addFieldsUser() {
       'label' => $fieldlabel,
     ));
     $field->save();
+
+    // Create a form display for the default form mode.
+    entity_get_form_display('user', 'user', 'default')
+     ->setComponent($fieldname, array(
+     'persist_with_no_fields' => TRUE,
+    ))->save();
+
   }
 
   $fieldname = 'field_user_gender';
@@ -148,6 +171,12 @@ function _addFieldsUser() {
       'label' => $fieldlabel,
     ));
     $field->save();
+
+    // Create a form display for the default form mode.
+    entity_get_form_display('user', 'user', 'default')
+      ->setComponent($fieldname, array(
+      'persist_with_no_fields' => TRUE,
+    ))->save();
   }
 
   $fieldname = 'field_user_zipcode';
@@ -168,6 +197,13 @@ function _addFieldsUser() {
       'label' => $fieldlabel,
     ));
     $field->save();
+
+          // Create a form display for the default form mode.
+          entity_get_form_display('user', 'user', 'default')
+          ->setComponent($fieldname, array(
+          'persist_with_no_fields' => TRUE,
+        ))->save();
+
   }
 
   $fieldname = 'field_user_terminos';
@@ -192,17 +228,12 @@ function _addFieldsUser() {
       )
     ));
     $field->save();
-
-    // Create a form display for the default form mode.
-    entity_get_form_display('user', 'user', 'default')
-      ->setComponent($fieldname, array(
-      'type' => 'boolean_checkbox',
-      'targetEntityType' => $entity_type,
-      'bundle' => $bundle,
-      'mode' => $form_mode,
-      'weight' => 1,
-      'status' => TRUE,
-    ))->save();
+    
+         // Create a form display for the default form mode.
+         entity_get_form_display('user', 'user', 'default')
+         ->setComponent($fieldname, array(
+         'persist_with_no_fields' => TRUE,
+       ))->save();
   }
 }
 
