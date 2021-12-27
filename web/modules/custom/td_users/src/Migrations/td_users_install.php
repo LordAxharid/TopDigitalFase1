@@ -1,5 +1,6 @@
 <?php
 
+use \Drupal\Core\Entity;
 use \Drupal\Core\Entity\Display\EntityFormDisplayInterface;
 
 /**
@@ -36,8 +37,17 @@ function _addFieldsUser() {
       'bundle' => 'user',
       'label' => $fieldlabel,
     ));
-    entity_get_form_display();
     $field->save();
+
+    // Create a form display for the default form mode.
+    entity_get_form_display('user', 'user', 'default')
+      ->setComponent($fieldname, array(
+      'targetEntityType' => $entity_type,
+      'bundle' => $bundle,
+      'mode' => $form_mode,
+      'weight' => 1,
+      'status' => TRUE,
+    ))->save();
   }
 
   $fieldname = 'field_user_lastname';
@@ -187,25 +197,13 @@ function _addFieldsUser() {
     entity_get_form_display('user', 'user', 'default')
       ->setComponent($fieldname, array(
       'type' => 'boolean_checkbox',
-    ))->save();
-  }
-}
-
-function entity_get_form_display($entity_type, $bundle, $form_mode) {
-
-  $entity_form_display = entity_load('user', $entity_type . 'user' . $bundle . 'default' . $form_mode);
-
-  if (!$entity_form_display) {
-    $entity_form_display = EntityFormDisplay::create(array(
       'targetEntityType' => $entity_type,
       'bundle' => $bundle,
       'mode' => $form_mode,
       'weight' => 1,
       'status' => TRUE,
-    ));
+    ))->save();
   }
-
-  return $entity_form_display;
 }
 
 /**
