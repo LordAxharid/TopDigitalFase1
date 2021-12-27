@@ -260,10 +260,13 @@ function _addFieldsUser() {
       'type' => 'string',
     ));
     $field_storage->save();
+  
+  }
+}
 
 function entity_get_form_display($entity_type, $bundle, $form_mode) {
 
-  $entity_form_display = entity_load('entity_form_display', $entity_type . '.' . $bundle . '.' . $form_mode);
+  $entity_form_display = entity_load('user', $entity_type . 'user' . $bundle . 'default' . $form_mode);
 
   if (!$entity_form_display) {
     $entity_form_display = EntityFormDisplay::create(array(
