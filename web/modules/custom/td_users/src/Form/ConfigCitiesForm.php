@@ -71,8 +71,7 @@ class ConfigCitiesForm extends ConfigFormBase
     parent::submitForm($form, $form_state);
 
       $cid  = $form_state->getValue('cid');
-      $name    = $form_state->getValue('name');
-      $iso = $form_state->getValue('iso');
+      $name = $form_state->getValue('name');
 
     $this->config('adminconfig.adminsettings')
       ->set('cid', $cid)
