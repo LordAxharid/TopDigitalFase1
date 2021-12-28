@@ -46,14 +46,14 @@ class ConfigCitiesForm extends ConfigFormBase
 
     $form['cid'] = [
       '#type' => 'text',
-      '#title' => 'Nombre',
+      '#title' => 'CID',
       '#required' => TRUE,
       '#default_value' => $config->get('cid'),
     ];
 
     $form['name'] = [
       '#type' => 'text',
-      '#title' => 'name',
+      '#title' => 'Nombre',
       '#required' => TRUE,
       '#default_value' => $config->get('name'),
     ];
@@ -71,7 +71,7 @@ class ConfigCitiesForm extends ConfigFormBase
     parent::submitForm($form, $form_state);
 
       $cid  = $form_state->getValue('cid');
-      $name = $form_state->getValue('name');
+      $name    = $form_state->getValue('name');
 
     $this->config('adminconfig.adminsettings')
       ->set('cid', $cid)
@@ -81,7 +81,7 @@ class ConfigCitiesForm extends ConfigFormBase
     parent::submitForm($form, $form_state);
 
     // save new country
-    $requestSaveData = $this->save_city($cid, $name);
+    $requestSaveData = $this->save_country($cid, $name);
   }
 
   /**
@@ -96,11 +96,11 @@ class ConfigCitiesForm extends ConfigFormBase
   }
 
   /**
-   * save_city
+   * save_country
    *
    * @return void
    */
-  public function save_city ($cid, $name){
+  public function save_country ($cid, $name){
     
     $this->db->insert($this->table)
         ->fields(array('cid' => $cid, 'name' => $name ))
