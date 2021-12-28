@@ -7,3 +7,23 @@ td_users.register_form:
     _permission: 'access content'
   options:
     _admin_route: TRUE
+
+td_users.config.admin.create_country:
+  path: '/admin/config/countries/create_country'
+  defaults:
+    _form: '\Drupal\td_users\Form\ConfigCountriesForm'
+    _title: 'Creacion de paises'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
+
+td_users.config.admin.create_cities:
+  path: '/admin/config/cities/create_city'
+  defaults:
+    _form: '\Drupal\td_users\Form\ConfigCitiesForm'
+    _title: 'Creacion de ciudades'
+  requirements:
+    _permission: 'access administration pages'
+  options:
+    _admin_route: TRUE
