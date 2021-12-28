@@ -29,7 +29,7 @@ class ConfigCitiesForm extends ConfigFormBase
    * {@inheritdoc}
    */
 
-  public function getEditableConfigcids()
+  public function getEditableConfigNames()
   {
     return [
       'adminconfig.adminsettings',
@@ -45,14 +45,14 @@ class ConfigCitiesForm extends ConfigFormBase
     $config = $this->config('adminconfig.adminsettings');
 
     $form['cid'] = [
-      '#type' => 'text',
+      '#type' => 'textfield',
       '#title' => 'CID',
       '#required' => TRUE,
       '#default_value' => $config->get('cid'),
     ];
 
     $form['name'] = [
-      '#type' => 'text',
+      '#type' => 'textfield',
       '#title' => 'Nombre',
       '#required' => TRUE,
       '#default_value' => $config->get('name'),
@@ -108,4 +108,4 @@ class ConfigCitiesForm extends ConfigFormBase
     
   }
 
-}
+} 
