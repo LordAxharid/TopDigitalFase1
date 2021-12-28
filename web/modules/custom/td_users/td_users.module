@@ -41,10 +41,6 @@ function td_users_form_user_register_form_alter(&$form, FormStateInterface $form
   
         }
     }
-
-   $countries =  \Drupal::service('country_manager')->getList();
-    var_dump($countries);die;
-
 }
 
 

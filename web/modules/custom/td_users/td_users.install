@@ -1,6 +1,7 @@
 <?php
 /**
- * Implements hook_install()
+ * Implements hook_install() and schema
  */
 
 require(__DIR__.'/src/migrations/td_users_install.php');
+require(__DIR__.'/src/migrations/td_users_schema.php');

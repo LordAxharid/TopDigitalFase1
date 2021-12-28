@@ -179,6 +179,60 @@ function _addFieldsUser() {
     ))->save();
   }
 
+  $fieldname = 'field_user_country';
+  $fieldlabel = 'Pais';
+  if(!\Drupal\field\Entity\FieldStorageConfig::loadByName('user',$fieldname)){
+
+    $field_storage = \Drupal\field\Entity\FieldStorageConfig::create(array(
+      'field_name' => $fieldname,
+      'entity_type' => 'user',
+      'type' => 'string',
+    ));
+    $field_storage->save();
+
+    $field = \Drupal\field\Entity\FieldConfig::create(array(
+      'field_name' => $fieldname,
+      'entity_type' => 'user',
+      'bundle' => 'user',
+      'label' => $fieldlabel,
+    ));
+    $field->save();
+
+   // Create a form display for the default form mode.
+    entity_get_form_display('user', 'user', 'default')
+      ->setComponent($fieldname, array(
+      'persist_with_no_fields' => TRUE,
+    ))->save();
+
+  }
+
+  $fieldname = 'field_user_city';
+  $fieldlabel = 'Ciudad';
+  if(!\Drupal\field\Entity\FieldStorageConfig::loadByName('user',$fieldname)){
+
+    $field_storage = \Drupal\field\Entity\FieldStorageConfig::create(array(
+      'field_name' => $fieldname,
+      'entity_type' => 'user',
+      'type' => 'string',
+    ));
+    $field_storage->save();
+
+    $field = \Drupal\field\Entity\FieldConfig::create(array(
+      'field_name' => $fieldname,
+      'entity_type' => 'user',
+      'bundle' => 'user',
+      'label' => $fieldlabel,
+    ));
+    $field->save();
+
+   // Create a form display for the default form mode.
+    entity_get_form_display('user', 'user', 'default')
+      ->setComponent($fieldname, array(
+      'persist_with_no_fields' => TRUE,
+    ))->save();
+
+  }
+
   $fieldname = 'field_user_zipcode';
   $fieldlabel = 'Código postal';
   if(!\Drupal\field\Entity\FieldStorageConfig::loadByName('user',$fieldname)){
