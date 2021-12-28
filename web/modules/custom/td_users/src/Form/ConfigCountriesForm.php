@@ -45,21 +45,21 @@ class ConfigCountriesForm extends ConfigFormBase
     $config = $this->config('adminconfig.adminsettings');
 
     $form['name'] = [
-      '#type' => 'text',
+      '#type' => 'textfield',
       '#title' => 'Nombre',
       '#required' => TRUE,
       '#default_value' => $config->get('name'),
     ];
 
     $form['prefix'] = [
-      '#type' => 'text',
+      '#type' => 'textfield',
       '#title' => 'Prefix',
       '#required' => TRUE,
       '#default_value' => $config->get('prefix'),
     ];
 	
 	  $form['iso'] = [
-		  '#type' => 'text',
+		  '#type' => 'textfield',
 		  '#title' => t('ISO'),
 		  '#required' => TRUE,
 		  '#default_value' => $config->get('iso'),

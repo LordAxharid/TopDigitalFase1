@@ -290,11 +290,3 @@ function _addFieldsUser() {
        ))->save();
   }
 }
-
-/**
- * Implements hook_uninstall()
- */
-function td_users_uninstall()
-{
-
-}
