@@ -8,7 +8,7 @@ function td_users_uninstall() {
   $db_connection->schema()->dropTable('td_users_countries');
 }
 
-function co_trivia_150_schema() {
+function td_users_schema() {
     $schema['td_users_countries'] =  [
         'description' => 'Guarda los datos de los usuarios que realicen la trivia',
         'fields' => [
