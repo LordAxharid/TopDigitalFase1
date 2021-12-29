@@ -206,33 +206,6 @@ function _addFieldsUser() {
 
   }
 
-  $fieldname = 'field_user_select_country';
-  $fieldlabel = 'Pais Seleccion';
-  if(!\Drupal\field\Entity\FieldStorageConfig::loadByName('user',$fieldname)){
-
-    $field_storage = \Drupal\field\Entity\FieldStorageConfig::create(array(
-      'field_name' => $fieldname,
-      'entity_type' => 'user',
-      'type' => 'select',
-    ));
-    $field_storage->save();
-
-    $field = \Drupal\field\Entity\FieldConfig::create(array(
-      'field_name' => $fieldname,
-      'entity_type' => 'user',
-      'bundle' => 'user',
-      'label' => $fieldlabel,
-    ));
-    $field->save();
-
-   // Create a form display for the default form mode.
-    entity_get_form_display('user', 'user', 'default')
-      ->setComponent($fieldname, array(
-      'persist_with_no_fields' => TRUE,
-    ))->save();
-
-  }
-
   $fieldname = 'field_user_city';
   $fieldlabel = 'Ciudad';
   if(!\Drupal\field\Entity\FieldStorageConfig::loadByName('user',$fieldname)){
@@ -241,33 +214,6 @@ function _addFieldsUser() {
       'field_name' => $fieldname,
       'entity_type' => 'user',
       'type' => 'string',
-    ));
-    $field_storage->save();
-
-    $field = \Drupal\field\Entity\FieldConfig::create(array(
-      'field_name' => $fieldname,
-      'entity_type' => 'user',
-      'bundle' => 'user',
-      'label' => $fieldlabel,
-    ));
-    $field->save();
-
-   // Create a form display for the default form mode.
-    entity_get_form_display('user', 'user', 'default')
-      ->setComponent($fieldname, array(
-      'persist_with_no_fields' => TRUE,
-    ))->save();
-
-  }
-
-  $fieldname = 'field_user_select_city';
-  $fieldlabel = 'Ciudad Seleccion';
-  if(!\Drupal\field\Entity\FieldStorageConfig::loadByName('user',$fieldname)){
-
-    $field_storage = \Drupal\field\Entity\FieldStorageConfig::create(array(
-      'field_name' => $fieldname,
-      'entity_type' => 'user',
-      'type' => 'select',
     ));
     $field_storage->save();
 

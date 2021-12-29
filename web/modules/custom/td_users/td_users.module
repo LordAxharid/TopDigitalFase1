@@ -42,7 +42,7 @@ function td_users_form_user_register_form_alter(&$form, FormStateInterface $form
         }
     }
 
-    $form['field_user_country'] = array(
+    $form['field_user_select_country'] = array(
       '#type' => 'select',
       '#title'=>'Pais DB',
       '#field_name' => 'country',
@@ -55,7 +55,7 @@ function td_users_form_user_register_form_alter(&$form, FormStateInterface $form
       '#required' => true,
       '#default_value' => $nodeCountryId,
   );
-  $form['field_user_city'] = array(
+  $form['field_user_select_city'] = array(
       '#title'=>'Ciudad',
       '#type' => 'select',
       '#options'=>\Drupal::database()->select('td_users_cities','u')->fields('u',['id','name'])->condition('cid',$nodeCountryId ? $nodeCountryId : 1,'=')->execute()->fetchAllKeyed(),
@@ -70,24 +70,24 @@ function td_users_form_user_register_form_alter(&$form, FormStateInterface $form
       '#required' => true,
       '#default_value' => $nodeCityId,
   );
-  $form['field_city_select']['widget']['#prefix'] = '<div id="select-city" hidden>';
-  $form['field_city_select']['widget']['#suffix'] = '</div>';
+  $form['field_user_select_city']['widget']['#prefix'] = '<div id="select-city" hidden>';
+  $form['field_user_select_city']['widget']['#suffix'] = '</div>';
    
 }
 
 function  select_country_callback(&$form, FormStateInterface $form_state) {
-      $countryId = $form['field_user_country']['#value'];
-      $form_state->setValue('field_country_select',[["value" => $countryId]]);
-      $form['field_user_city']['#options'] = \Drupal::database()->select('td_users_cities','u')->fields('u',['id','name'])->condition('cid',$countryId,'=')->execute()->fetchAllKeyed();
+      $countryId = $form['field_user_select_country']['#value'];
+      $form_state->setValue('field_user_country',[["value" => $countryId]]);
+      $form['field_user_select_city']['#options'] = \Drupal::database()->select('td_users_cities','u')->fields('u',['id','name'])->condition('cid',$countryId,'=')->execute()->fetchAllKeyed();
 
-      return $form['field_user_city'];
+      return $form['field_user_select_city'];
   }
 
   function  select_city_callback(&$form, FormStateInterface $form_state){
-       $cityId = $form['field_user_city']['#value'];
-       $form['field_city_select']['widget'][0]['value']['#value'] = $cityId;
+       $cityId = $form['field_user_select_city']['#value'];
+       $form['field_user_city']['widget'][0]['value']['#value'] = $cityId;
 
-       return $form['field_city_select']['widget'];
+       return $form['field_user_city']['widget'];
     }
 
 function saveName(array &$form, \Drupal\Core\Form\FormStateInterface $form_state) {
