@@ -102,9 +102,25 @@ class ConfigCitiesForm extends ConfigFormBase
    */
   public function save_country ($cid, $name){
     
-    $this->db->insert($this->table)
-        ->fields(array('cid' => $cid, 'name' => $name ))
-        ->execute();
+    $id = \Drupal::database()->select($this->table, 'c')
+      ->fields('c', ['id'])
+      ->condition('c.name', $name)
+      ->execute()
+      ->fetchField();
+
+    if (!$id) {
+      $query = $this->db->insert($this->table)
+      ->fields([
+        'cid' => $cid,
+        'name' => $name,
+      ])
+      ->execute();
+    }else {
+      
+      
+
+    }
+  
     
   }
 

@@ -84,7 +84,7 @@ class ConfigCountriesForm extends ConfigFormBase
     $this->config('adminconfig.adminsettings')
       ->set('name', $name)
       ->set('prefix', $prefix)
-	  ->set('iso', $iso)
+	    ->set('iso', $iso)
       ->save();
 
     parent::submitForm($form, $form_state);
@@ -109,11 +109,31 @@ class ConfigCountriesForm extends ConfigFormBase
    *
    * @return void
    */
-  public function save_country ($name, $prefix, $iso){
+  public function save_country ($name, $iso ,$prefix){
     
-    $this->db->insert($this->table)
-        ->fields(array('name' => $name, 'prefix' => $prefix, 'iso' => $iso ))
-        ->execute();
+        $id = \Drupal::database()->select($this->table, 'c')
+        ->fields('c', ['id'])
+        ->condition('c.name', $name)
+        ->condition('c.iso', $iso)
+        ->condition('c.prefix', $prefix)
+        ->execute()
+        ->fetchField();
+
+        if (!$id) {
+
+          $query = $this->db->insert($this->table)
+          ->fields([
+          'name' => $name, 
+          'iso' => $iso,
+          'prefix' => $prefix
+          ])
+          ->execute();
+
+        }else {
+          
+          
+
+        }
     
   }
 
