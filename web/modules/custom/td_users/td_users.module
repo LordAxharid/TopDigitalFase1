@@ -46,7 +46,7 @@ function td_users_form_user_register_form_alter(&$form, FormStateInterface $form
       '#type' => 'select',
       '#title'=>'Pais DB',
       '#field_name' => 'country',
-      '#options'=>\Drupal::database()->select('td_users_countries','u')->fields('u',['id','name'])->execute()->fetchAllKeyed(),
+      '#options'=>\Drupal::database()->select('td_users_countries','u')->fields('u',['prefix','name'])->execute()->fetchAllKeyed(),
       '#ajax'=> array(
           'event' => 'change',
           'callback' => 'select_country_callback', 
@@ -58,7 +58,7 @@ function td_users_form_user_register_form_alter(&$form, FormStateInterface $form
   $form['field_user_select_city'] = array(
       '#title'=>'Ciudad',
       '#type' => 'select',
-      '#options'=>\Drupal::database()->select('td_users_cities','u')->fields('u',['id','name'])->condition('cid',$nodeCountryId ? $nodeCountryId : 1,'=')->execute()->fetchAllKeyed(),
+      '#options'=>\Drupal::database()->select('td_users_cities','u')->fields('u',['cid','name'])->condition('cid',$nodeCountryId ? $nodeCountryId : 1,'=')->execute()->fetchAllKeyed(),
       '#validated' => TRUE,
       '#prefix' => '<div id="select-country">',
       '#suffix' => '</div>',
